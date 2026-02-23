@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ejad_pos_extend.CashNowButton">
+        <button class="control-button btn btn-light rounded-0 fw-bolder text-success"
+                t-on-click="() => this.click()">
+            <i class="fa fa-money me-1" role="img" aria-label="Cash Now" />
+            Cash Now
+        </button>
+    </t>
+</templates>
