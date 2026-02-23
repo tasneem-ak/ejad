@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ejad.iml" filepath="$PROJECT_DIR$/.idea/ejad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../enter/.idea/enter.iml" filepath="$PROJECT_DIR$/../../enter/.idea/enter.iml" />
     </modules>
   </component>
 </project>

@@ -7,6 +7,7 @@
     'assets': {
         'point_of_sale._assets_pos': [
             'ejad_pos_extend/static/src/js/pos_payment_patch.js',
+            'ejad_pos_extend/static/src/js/payment_screen_patch.js',
         ],
     },
     'installable': True,
