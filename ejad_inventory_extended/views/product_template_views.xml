@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_template_form_view_rop" model="ir.ui.view">
+        <field name="name">product.template.form.rop</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+
+            <!-- Smart button -->
+            <div name="button_box" position="inside">
+                <button name="action_view_same_rop_products"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-refresh"
+                    invisible="not has_rop or not rop_count">
+                    <field name="same_rop_count" string="Same ROP" widget="statinfo"/>
+                </button>
+            </div>
+
+            <!-- Fields after the options div -->
+            <div name="options" position="after">
+                <group>
+                    <group>
+                        <field name="has_rop"/>
+                        <field name="rop_count" invisible="not has_rop"/>
+                    </group>
+                </group>
+            </div>
+
+        </field>
+    </record>
+
+</odoo>
