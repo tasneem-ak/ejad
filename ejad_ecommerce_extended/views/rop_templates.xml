@@ -20,7 +20,16 @@
                             <t t-foreach="products" t-as="product">
                                 <tr>
                                     <td>
-                                        <img t-att-src="'/web/image/product.product/%s/image_128' % product.id"                                             style="max-height:50px; max-width:50px;" alt="Product Image"/>
+                                        <img t-att-src="'/web/image/product.product/%s/image_128' % product.id"
+                                             style="max-height:50px; max-width:50px;" alt="Product Image"/>
+                                        <br/>
+                                        <button type="button"
+                                                class="btn btn-sm btn-primary mt-1 btn_update_qty"
+                                                t-att-data-product-id="product.id"
+                                                t-att-data-product-name="product.display_name"
+                                                t-att-data-product-qty="product.qty_available">
+                                            Update Product Quantity
+                                        </button>
                                     </td>
                                     <td>
                                         <a t-att-href="'/shop/%s' % product.product_tmpl_id.id">
@@ -43,6 +52,31 @@
                     </table>
                 </t>
             </div>
+
+            <div class="modal fade" id="updateQtyModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Update Product Quantity</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        </div>
+                        <div class="modal-body">
+                            <p>Product: <strong id="modalProductName"></strong></p>
+                            <p>Current Qty on Hand: <strong id="modalCurrentQty"></strong></p>
+                            <div class="mb-3">
+                                <label for="newQtyInput" class="form-label">New Quantity on Hand</label>
+                                <input type="number" class="form-control" id="newQtyInput" min="0" step="1" required="required"/>
+                            </div>
+                            <input type="hidden" id="modalProductId"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="btnApplyQty">Apply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </t>
     </template>
 
