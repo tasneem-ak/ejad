@@ -56,3 +56,36 @@ class RopController(http.Controller):
                 'message': message,
                 'type': 'info',
                 'sticky': True, })
+
+    @http.route('/shop/rop/realtime', type='http', auth='user', website=True)
+    def rop_realtime_products(self, **kwargs):
+        self._check_rop_access()
+        products = request.env['product.product'].sudo().search([('qty_available', '>', 5), ('type', '=', 'product'), ])
+        return request.render('ejad_ecommerce_extended.rop_realtime_page', {'products': products})
+
+    @http.route('/shop/rop/realtime/data', type='json', auth='user', website=True)
+    def rop_realtime_data(self):
+        self._check_rop_access()
+        products = request.env['product.product'].sudo().search([('qty_available', '>', 5), ('type', '=', 'product'), ])
+        return [{
+            'id': p.id,
+            'display_name': p.display_name,
+            'default_code': p.default_code or '',
+            'qty_available': p.qty_available,
+            'lst_price': p.lst_price,
+            'currency_symbol': p.currency_id.symbol,
+            'template_id': p.product_tmpl_id.id,
+        } for p in products]
+
+    @http.route('/rop-product', type='json', auth='user')
+    def rop_product_api(self):
+        self._check_rop_access()
+        products = request.env['product.product'].sudo().search([('qty_available', '<', 5), ('type', '=', 'product'), ])
+        return [{
+            'id': p.id,
+            'display_name': p.display_name,
+            'default_code': p.default_code or '',
+            'qty_available': p.qty_available,
+            'lst_price': p.lst_price,
+            'currency_symbol': p.currency_id.symbol,
+        } for p in products]

@@ -12,6 +12,7 @@
     'assets': {
         'web.assets_frontend': [
             'ejad_ecommerce_extended/static/src/js/rop_update_qty.js',
+            # 'ejad_ecommerce_extended/static/src/js/rop_realtime.js',
         ],
     },
     'installable': True,

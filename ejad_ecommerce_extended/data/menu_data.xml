@@ -7,5 +7,11 @@
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence" type="int">21</field>
         </record>
+        <record id="menu_shop_rop_realtime" model="website.menu">
+            <field name="name">Real-time ROP</field>
+            <field name="url">/shop/rop/realtime</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">22</field>
+        </record>
     </data>
 </odoo>
