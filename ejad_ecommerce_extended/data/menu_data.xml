@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="menu_shop_rop" model="website.menu">
+            <field name="name">Shop ROP</field>
+            <field name="url">/shop/rop</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">21</field>
+        </record>
+    </data>
+</odoo>

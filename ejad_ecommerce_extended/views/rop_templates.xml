@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="rop_products_page" name="ROP Products Page">
+        <t t-call="website.layout">
+            <div id="wrap" class="container oe_website_sale py-3">
+                <h2 class="mb-4">ROP Products (Quantity &lt; 5)</h2>
+                <t t-if="products">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product</th>
+                                <th>Internal Reference</th>
+                                <th>Available Qty</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="products" t-as="product">
+                                <tr>
+                                    <td>
+                                        <img t-att-src="'/web/image/product.product/%s/image_128' % product.id"                                             style="max-height:50px; max-width:50px;" alt="Product Image"/>
+                                    </td>
+                                    <td>
+                                        <a t-att-href="'/shop/%s' % product.product_tmpl_id.id">
+                                            <t t-out="product.display_name"/>
+                                        </a>
+                                    </td>
+                                    <td><t t-out="product.default_code or ''"/></td>
+                                    <td>
+                                        <span class="badge bg-danger" t-if="product.qty_available &lt;= 0">
+                                            <t t-out="product.qty_available"/>
+                                        </span>
+                                        <span class="badge bg-warning text-dark" t-else="">
+                                            <t t-out="product.qty_available"/>
+                                        </span>
+                                    </td>
+                                    <td><t t-out="product.lst_price"/> <t t-out="product.currency_id.symbol"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </t>
+            </div>
+        </t>
+    </template>
+
+</odoo>
